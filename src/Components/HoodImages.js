@@ -14,8 +14,10 @@ function HoodImages (props){
     {
       props.tshirts.map(item => {
         return (
-          <Shirt url={item.imageURL}/>
+          <Shirt shirt = {item} />
+       
         )
+        console.log(props);
       })
     }
 

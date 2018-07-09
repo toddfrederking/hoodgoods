@@ -1,14 +1,14 @@
 import React from "react";
 import BuyBar from "./BuyBar";
 
-function BoxToBuy (){
+function BoxToBuy (props){
   return(
     <div className="buy-it-box">
     <div className="price-box">
-      $25
+      ${props.shirt.price}
     </div>
     <div className="box-for-drop-downs">
-    <BuyBar/>
+    <BuyBar shirt={props.shirt}/>
 
     </div>
     <div className="box-for-button">

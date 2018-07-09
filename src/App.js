@@ -37,7 +37,9 @@ class App extends Component {
         <NavBar/>
         <Logo/>
         <HoodsTitle/>
+      
         <HoodImages tshirts={this.state.tshirts}/>
+        
         <Bio/>
         
       </div>
