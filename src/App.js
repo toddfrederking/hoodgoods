@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-
+import state from './state';
 import logo from './logo.svg';
 import './App.css';
 import NavBar from "./Components/NavBar";

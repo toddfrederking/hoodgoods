@@ -1,4 +1,5 @@
 import React from "react";
+import state from "../state";
 
 function NavBar (){
   return(
@@ -21,7 +22,7 @@ function NavBar (){
         <a href="#">search</a>
       </div>
       <div className="cart nav-border">
-        <a href="#">cart</a>
+        <a href="#">cart {(state.numberOfItemsInCart)}</a>
       </div>
     </div>
   </div>

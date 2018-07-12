@@ -1,23 +1,55 @@
 import React from "react";
+import state from "../state";
 
 function BuyBar (props){
+
+
   const newCartItem = {
     id:'',
     size:'',
     quantity:'',
     price:''
   }
+
+
   function setSize(size) {
-    newCartItem.size = size;
-    console.log(newCartItem);
-  }
-  function setQuantity (quantity) {
-    newCartItem.quantity= (quantity);
-    console.log(newCartItem);
-  }
+   if(!state.active[props.shirt.id]){
+     state.active[props.shirt.id] = {
+      id:'',
+      size: size,
+      quantity:'',
+      price:''
+     }
+    } else {
+      state.active[props.shirt.id].size = size 
+    }
+    // console.log(state)
+    // newCartItem.size = size;
+   }
+    
+    
+  
+  function setQuantity (quantity,props) {
+    // newCartItem.quantity= (quantity);
+    // console.log(newCartItem);
+    if(!state.active[props.shirt.id]){
+      state.active[props.shirt.id] = {
+       id:'',
+       size: '',
+       quantity: quantity,
+       price:''
+      }
+     } else {
+       state.active[props.shirt.id].quantity = quantity;
+       state.active[props.shirt.id].id=props.shirt.id;
+       state.active[props.shirt.id].price=props.shirt.price;
+     }
+    //  console.log(state)
+    
+    }
   
   return(
-  
+ 
     <div className="buy-bar">
     <ul>
       <li><a href="#">size</a>
@@ -42,27 +74,28 @@ function BuyBar (props){
       <li><a href="#">how many</a>
         <ul>
           <li onClick={()=>{
-            setQuantity(1)
+            setQuantity(1,props)
           }}><a href="#">1</a></li>
 
           <li onClick={()=>{
-            setQuantity(2)
+            setQuantity(2,props)
           }}><a href="#">2</a></li>
 
           <li onClick={()=>{
-            setQuantity(3)
+            setQuantity(3,props)
           }}><a href="#">3</a></li>
 
           <li onClick={()=>{
-            setQuantity(4)
+            setQuantity(4,props)
           }}><a href="#">4</a></li>
         </ul>
       </li>
     </ul>
   </div>
-  // <div className="box-for-button">
+  // {/* <div className="box-for-button">
   // <button className="cart-button">add to cart</button>
-  // </div>
+  // </div> */}
+ 
  
 
 

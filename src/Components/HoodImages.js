@@ -17,7 +17,7 @@ function HoodImages (props){
           <Shirt shirt = {item} />
        
         )
-        console.log(props);
+        // console.log(props);
       })
     }
 
