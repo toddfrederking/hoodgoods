@@ -4,25 +4,43 @@ import ShowCart from "./ShowCart";
 import {OverlayTrigger, Button, Popover} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Shirt from './Shirt';
+import BabyShirt from './BabyShirt';
 
 
 
 
 function NavBar (props){
+  function subTotal(props){
+    let subArray = [];
+    subArray = props.store.cart.map(props => {
+      let littleSub = (props.quantity * props.price)
+      subArray = subArray.push(littleSub);
+      return subArray;
+    })
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    return(subArray.reduce(reducer, 0));
+
+  } 
+
+
   const popoverBottom = (
-    <Popover id="popover-positioned-bottom" title="Cart">
-      <strong>Holy guacamole!</strong> Check this info.
-      <div className = "mock-box">
+    <Popover id="popover-positioned-bottom" title="Cart" className = "cart-box">
+      <strong>Items In Your Cart</strong>
+      <div className = "cart-box">
       {
       props.store.cart.map(item => {
         return (
-          <Shirt shirt = {item} />
+          <BabyShirt shirt = {item} />
        
         )
         // console.log(props);
       })
     }
+    
 
+    <ul>
+      <li>Subtotal: </li>
+    </ul>
       </div>
 
     </Popover>

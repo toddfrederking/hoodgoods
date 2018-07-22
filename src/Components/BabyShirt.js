@@ -2,11 +2,19 @@ import React from "react";
 
 
 
-function Shirt (props){
+function BabyShirt (props){
 
   return(
-    <div className="mock-box">
-    <img src={props.shirt.imageURL} className="image-format" />
+    <div className = "mini-mock-box">
+    <img src={props.shirt.imageURL} className="baby-image-format" />
+    <ul>
+      <li>Size: {(props.shirt.size)}</li>
+      <li>Quantity: {(props.shirt.quantity)}</li>
+      <li>Price: {(props.shirt.price)}</li>
+      {/* <li>Subtotal: $ {(props.shirt.quantity)}</li> */}
+
+    </ul>
+
     
     </div>
 
@@ -15,4 +23,4 @@ function Shirt (props){
 
 };
 
-export default Shirt;
+export default BabyShirt;
