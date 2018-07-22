@@ -39,7 +39,7 @@ function NavBar (props){
     
 
     <ul>
-      <li>Subtotal: </li>
+      <li>Subtotal: {subTotal(props)}</li>
     </ul>
       </div>
 
