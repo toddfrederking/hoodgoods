@@ -1,17 +1,18 @@
 import React from "react";
+import { connect } from 'react-redux';
 import BuyBar from "./BuyBar";
 import state from "../state";
+import {setCart} from "../actions";
 
 function BoxToBuy (props){
 
 function pushToCart () {
-  state.cart.push(state.active);
-  state.numberOfItemsInCart = state.cart.length;
-  state.active = {
+  console.log(props, "inpushToCart")
+  props.dispatch(setCart(props.store.active))
 
-  }
+  
 };
-
+// debugger;
   return(
     <div className="buy-it-box">
     <div className="price-box">
@@ -29,8 +30,11 @@ function pushToCart () {
   </div>
   
   )
-  // console.log("cart", state.cart);
+  console.log("cart", props.store.cart);
 
 }
+const mapStateToProps = store => ({
+  store
+})
 
-export default BoxToBuy;
+export default connect(mapStateToProps)(BoxToBuy)

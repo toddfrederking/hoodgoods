@@ -1,5 +1,8 @@
 import React from "react";
+import { connect } from 'react-redux';
 import state from "../state";
+import {setProductSize, setProductQuantity} from '../actions';
+
 
 function BuyBar (props){
 
@@ -8,11 +11,14 @@ function BuyBar (props){
     id:'',
     size:'',
     quantity:'',
-    price:''
+    price:'',
+    imageURL:''
   }
 
 
   function setSize(size) {
+  //  props.dispatch(setProductSize(size, props.shirt.id));
+
    if(!state.active[props.shirt.id]){
      state.active[props.shirt.id] = {
       id:'',
@@ -29,65 +35,64 @@ function BuyBar (props){
     
     
   
-  function setQuantity (quantity,props) {
+  function setQuantity (quantity,id, price, imageURL) {
     // newCartItem.quantity= (quantity);
     // console.log(newCartItem);
-    if(!state.active[props.shirt.id]){
-      state.active[props.shirt.id] = {
+    if(!state.active[id]){
+      state.active[id] = {
        id:'',
        size: '',
        quantity: quantity,
-       price:''
+       price:'',
+       imageURL:''
       }
      } else {
-       state.active[props.shirt.id].quantity = quantity;
-       state.active[props.shirt.id].id=props.shirt.id;
-       state.active[props.shirt.id].price=props.shirt.price;
+       state.active[id].quantity = quantity;
+       state.active[id].id=props.shirt.id;
+       state.active[id].price;
+       state.active[id].imageURL=props.shirt.imageURL;
      }
-    //  console.log(state)
-    
+     
     }
-  
+
+    console.log(props.shirt)
+    
   return(
  
     <div className="buy-bar">
     <ul>
       <li><a href="#">size</a>
         <ul>
-          <li onClick={() => {
-            setSize("small");
+          <li onClick={(e) => {
+            e.preventDefault();
+            props.onSetProductSize('small', props.shirt.id)
           }}><a href="#">small</a></li>
 
-          <li onClick={()=>{
-            setSize("medium")
+          <li onClick={(e)=>{
+            // setSize("medium");
+            e.preventDefault();
+            props.onSetProductSize('medium', props.shirt.id)
           }}><a href="#">medium</a></li>
 
-          <li onClick={()=>{
-            setSize('large')
+          <li onClick={(e)=>{
+            e.preventDefault();
+            props.onSetProductSize('large', props.shirt.id)
           }}><a href="#">large</a></li>
 
-          <li onClick={()=>{
-            setSize('XL')
+          <li onClick={(e)=>{
+            e.preventDefault();
+            props.onSetProductSize('XL', props.shirt.id)
           }}><a href="#">huggable</a></li>
         </ul>
       </li>
       <li><a href="#">how many</a>
         <ul>
-          <li onClick={()=>{
-            setQuantity(1,props)
-          }}><a href="#">1</a></li>
-
-          <li onClick={()=>{
-            setQuantity(2,props)
-          }}><a href="#">2</a></li>
-
-          <li onClick={()=>{
-            setQuantity(3,props)
-          }}><a href="#">3</a></li>
-
-          <li onClick={()=>{
-            setQuantity(4,props)
-          }}><a href="#">4</a></li>
+          {[1, 2, 3, 4].map(item => (
+            <li onClick={(e)=>{
+              e.preventDefault();
+              props.onSetQuantity(item,props.shirt.id, props.shirt.price, props.shirt.imageURL);
+              }}><a href="#">{item}</a></li>
+          ))}
         </ul>
       </li>
     </ul>
@@ -103,4 +108,16 @@ function BuyBar (props){
 
 }
 
-export default BuyBar;
+const mapStateToProps = store => ({
+  store:store
+})
+const mapDispatchToProps = dispatch => ({
+  onSetProductSize: (size, id) => {
+    dispatch(setProductSize(size, id)) 
+  },
+  onSetQuantity: (quantity, id, price, imageURL) => {
+    dispatch(setProductQuantity(quantity,id,price,imageURL))
+  }
+
+})
+export default connect(mapStateToProps, mapDispatchToProps)(BuyBar);
