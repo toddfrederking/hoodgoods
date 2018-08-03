@@ -7,7 +7,7 @@ function BabyShirt (props){
   return(
     <div className = "mini-mock-box">
     <img src={props.shirt.imageURL} className="baby-image-format" />
-    <ul>
+    <ul className="cart-list">
       <li>Size: {(props.shirt.size)}</li>
       <li>Quantity: {(props.shirt.quantity)}</li>
       <li>Price: {(props.shirt.price)}</li>

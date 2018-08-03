@@ -14,10 +14,7 @@ function checkout(carts) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(carts)
-  })
-  .then(response => {
-    debugger;
-  })
+  });
 }
 
 
@@ -48,7 +45,7 @@ function NavBar (props){
     }
     
 
-    <ul>
+    <ul className="cart-list">
       <li>Subtotal: {subTotal(props)}</li>
       <li>Tax: {(subTotal(props) * 0.0825).toFixed(2)}</li>
       <li>Shipping: $4</li>

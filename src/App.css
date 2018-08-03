@@ -105,15 +105,24 @@ body {
   
     /* width: 400px;
     height: 600px; */
-    margin: 20px;
+    /* margin: 20px; */
     box-sizing: border-box;
-    margin: 20px;
+    /* margin: 20px; */
     display: flex;
-    justify-content: center;
+    align-items: center;
+    /* justify-content: center; */
     flex-direction: column;
     font-family: 'Asap Condensed', sans-serif;
   }
 
+  .cart-list {
+    text-align: center;
+  }
+
+  .cart-list > li {
+    float: unset;
+    width: 100%;
+  }
 
 .image-format {
   border: 2px solid black;
@@ -355,7 +364,7 @@ ul li:hover ul li {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 #popover-positioned-bottom {

@@ -38,5 +38,5 @@ const Schema = mongoose.Schema;
 
 module.exports =  {
   getModel: mongoose.model("tshirt", tshirtSchema),
-  postModel: mongoose.model("ShoppingCarts", postSchema)
+  postModel: mongoose.model("ShoppingCarts", postSchema, "ShoppingCarts")
 };
