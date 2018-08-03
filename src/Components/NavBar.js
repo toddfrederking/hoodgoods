@@ -6,25 +6,35 @@ import { connect } from 'react-redux';
 import Shirt from './Shirt';
 import BabyShirt from './BabyShirt';
 
-
+function checkout(carts) {
+  fetch('http://localhost:3002/checkout', {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(carts)
+  })
+  .then(response => {
+    debugger;
+  })
+}
 
 
 function NavBar (props){
   function subTotal(props){
-    let subArray = [];
-    subArray = props.store.cart.map(props => {
-      let littleSub = (props.quantity * props.price)
-      subArray = subArray.push(littleSub);
-      return subArray;
-    })
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    return(subArray.reduce(reducer, 0));
-
+    return props.store.cart.reduce((accum, curr) => accum + (curr.price * curr.quantity), 0)
   } 
+
+  const Styles = {
+    // backgroundColor : 'red',
+    display: 'flex',
+    justifyContent: 'center' 
+  }
 
 
   const popoverBottom = (
-    <Popover id="popover-positioned-bottom" title="Cart" className = "cart-box">
+    <Popover style = {Styles} id="popover-positioned-bottom" className = "cart-box">
       <strong>Items In Your Cart</strong>
       <div className = "cart-box">
       {
@@ -40,7 +50,12 @@ function NavBar (props){
 
     <ul>
       <li>Subtotal: {subTotal(props)}</li>
+      <li>Tax: {(subTotal(props) * 0.0825).toFixed(2)}</li>
+      <li>Shipping: $4</li>
+      <li>Total {(subTotal(props) * 1.0825 + 4).toFixed(2)}</li>
+     
     </ul>
+    <button className = "cart-button" onClick={() => checkout(props.store.cart)}>Checkout</button>
       </div>
 
     </Popover>
@@ -71,9 +86,9 @@ function NavBar (props){
       
       </div> */}
       <OverlayTrigger trigger="click" placement="bottom"    overlay={popoverBottom}>
-        <Button onClick={(e) => {
+        <Button className="cart-button"onClick={(e) => {
             e.preventDefault();
-            <ShowCart cart ={props.store.cart}/>}}>Cart {props.store.cart.length}</Button>
+            <ShowCart cart ={props.store.cart}/>}}>cart {props.store.cart.length}</Button>
       </OverlayTrigger>
     </div>
   </div>

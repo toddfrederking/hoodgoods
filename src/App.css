@@ -1,6 +1,6 @@
 body {
-  /* background: url(../img/grey-background-ferrari.jpg); */
-  /* no-repeat center center fixed; */
+  background: url(./img/grey-background-ferrari.jpg)
+  no-repeat center center fixed;
   background-size: cover;
   font-family: 'Asap Condensed', sans-serif;
 }
@@ -108,6 +108,10 @@ body {
     margin: 20px;
     box-sizing: border-box;
     margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Asap Condensed', sans-serif;
   }
 
 
@@ -212,6 +216,7 @@ ul li:hover ul li {
   background-color: white;
   border-radius: 5px;
   border: 2px solid rgba(0, 0, 0, 0);
+  font-family: 'Asap Condensed', sans-serif;
 }
 
 .cart-button:hover {
@@ -316,7 +321,7 @@ ul li:hover ul li {
 
 .bio {
   width: 100%;
-  height: 560px;
+  height: 700px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -346,12 +351,15 @@ ul li:hover ul li {
   border: 4px solid red;
 }
 
-/* .cart-box{
+.cart-box{
   display: flex;
+  flex-direction: column;
   justify-content: center;
-} */
+  background-color: blue;
+}
 
 #popover-positioned-bottom {
   display: flex;
   justify-content: center;
+  font-family: 'Asap Condensed', sans-serif;
 }

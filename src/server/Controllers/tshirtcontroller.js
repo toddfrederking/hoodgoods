@@ -1,20 +1,25 @@
-const tshirtModel = require ("../Models/tshirtsmodel");
+const { getModel, postModel } = require ("../Models/tshirtsmodel");
 
 module.exports.list = function list(request, response) {
-  tshirtModel.find({}).exec()
+  getModel.find({}).exec()
  .then(tshirt => {
    response.json(tshirt);
  });
 };
 
 module.exports.show = function show(request, response) {
-  tshirtModel.findById(request.params.id).exec()
+  getModel.findById(request.params.id).exec()
   .then(tshirt => {
     response.json(tshirt);
   });
 };
 
-tshirtModel.find({}).exec()
+module.exports.checkout = function checkout(request, response) {
+  postModel.create({ carts: request.body })
+  .then(res => res);
+}
+
+getModel.find({}).exec()
 .then(tshirts => {
   console.log(tshirts)
 });

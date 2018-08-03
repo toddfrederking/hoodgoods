@@ -22,7 +22,21 @@ const Schema = mongoose.Schema;
     imageURL: {
       required: true,
       type: String
+    },
+    quantity: {
+      required: true,
+      type: Number
     }
   });
 
-module.exports =  mongoose.model("tshirt", tshirtSchema);
+  const postSchema = new Schema({
+    carts: {
+      required: true,
+      type: Array
+    }
+  });
+
+module.exports =  {
+  getModel: mongoose.model("tshirt", tshirtSchema),
+  postModel: mongoose.model("ShoppingCarts", postSchema)
+};

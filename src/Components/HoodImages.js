@@ -14,7 +14,7 @@ function HoodImages (props){
     {
       props.tshirts.map(item => {
         return (
-          <Shirt shirt = {item} />
+          <Shirt key ={item.id} shirt = {item} />
        
         )
         // console.log(props);

@@ -87,8 +87,8 @@ function BuyBar (props){
       </li>
       <li><a href="#">how many</a>
         <ul>
-          {[1, 2, 3, 4].map(item => (
-            <li onClick={(e)=>{
+          {[1, 2, 3, 4].map((item, index) => (
+            <li key = {index} onClick={(e)=>{
               e.preventDefault();
               props.onSetQuantity(item,props.shirt.id, props.shirt.price, props.shirt.imageURL);
               }}><a href="#">{item}</a></li>
