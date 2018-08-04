@@ -21,7 +21,7 @@ function Bio (){
   </div>
 
   <div className="footer">
-    <p>&#x24B8 2017 hoodgoods.net</p>
+    <p>Copyright 2017 hoodgoods.net</p>
   </div>
 
   </div>
