@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 const tshirtroutes = require ("./Routes/tshirtroutes");
 
 app.use(tshirtroutes);
-// app.use(express.static('build'))
+app.use(express.static(__dirname + '../../../build'));
 
 app.listen(3002, (err) => {
   if (err) {
