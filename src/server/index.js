@@ -21,11 +21,13 @@ const tshirtroutes = require ("./Routes/tshirtroutes");
 app.use(tshirtroutes);
 app.use(express.static(__dirname + '../../../build'));
 
-app.listen(3002, (err) => {
+const port = process.env.REACT_APP_PROXY_PORT || 3002;
+
+app.listen(port, (err) => {
   if (err) {
     return console.log("Error", err);
   }
-  console.log("Web server is now living in apartment 3002(really)");
+  console.log(`Web server is now living in apartment ${port}(really)`);
   });
 
 
