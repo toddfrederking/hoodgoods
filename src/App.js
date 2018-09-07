@@ -13,7 +13,6 @@ import HoodImages from "./Components/HoodImages";
 import Bio from "./Components/Bio";
 
 const store = createStore(reducer);
-const port = process.env.REACT_APP_PROXY_PORT || 3002;
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +24,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:${port}/tshirts`)
+    fetch(`/tshirts`)
       .then(results => results.json())
       .then(json => {
         const results = json.pop();

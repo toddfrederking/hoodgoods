@@ -21,7 +21,7 @@ const tshirtroutes = require ("./Routes/tshirtroutes");
 app.use(tshirtroutes);
 app.use(express.static(__dirname + '../../../build'));
 
-const port = process.env.REACT_APP_PROXY_PORT || 3002;
+const port = process.env.PORT || 3002;
 
 app.listen(port, (err) => {
   if (err) {

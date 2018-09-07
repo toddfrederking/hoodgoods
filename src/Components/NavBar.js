@@ -6,10 +6,8 @@ import { connect } from 'react-redux';
 import Shirt from './Shirt';
 import BabyShirt from './BabyShirt';
 
-const port = process.env.REACT_APP_PROXY_PORT || 3002;
-
 function checkout(carts) {
-  fetch(`http://localhost:${port}/checkout`, {
+  fetch(`/checkout`, {
     method: 'post',
     headers: {
       'Accept': 'application/json',
